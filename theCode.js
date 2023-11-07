@@ -11,4 +11,16 @@ function Book(title, author, pages, status) {
 
 const lotr = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
 
-console.log(lotr.info())
+
+
+
+const myLibrary = [];
+
+function addBook(){
+
+myLibrary.push(lotr);
+
+}
+
+addBook();
+console.table(myLibrary)

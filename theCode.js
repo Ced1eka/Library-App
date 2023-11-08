@@ -17,7 +17,6 @@ myLibrary.push(lotr);
 myLibrary.push(lotr2);
 
 
-
 function addBook(){
 
 myLibrary.forEach((item) =>{
@@ -62,7 +61,8 @@ container.appendChild(card);
 
 });
 }
-addBook();
+// addBook();
+
 
 const contain = document.querySelector("body");
 const btn = document.createElement("button");
@@ -70,17 +70,34 @@ btn.classList.add("btn");
 btn.innerHTML = "Add Book"
 contain.appendChild(btn);
 
+btn.addEventListener('click',()=>{
+      const dia = document.querySelector("dialog");
+      dia.showModal();
+})
+
+
+const sub = document.querySelector(".sub");
+sub.addEventListener('click',()=>{
+      //closes modal
+      const dia = document.querySelector("dialog");
+      dia.close();
+      //get values
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const pages = document.getElementById('pages').value;
+      const status = document.getElementById('status').value;
+
+      const newBook = new Book(title, author, pages, status);
+      myLibrary.push(newBook);
+      addBook();
+/* implement a way to read values from inputs and
+   create a new Book object from them and store inside
+   the array.
+*/
+})
 
 function addNew(){
-
-      // const body = document.querySelector("body");
-      // const dialog = document.createElement("dialog");
-      // const form = document.createElement("form");
-      // dialog.appendChild(form);
-      // body.appendChild(dialog);
+// get value from the dialog inputs
 
 }
 addNew();
-
-const dia = document.querySelector("dialog");
-dia.showModal();

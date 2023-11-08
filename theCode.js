@@ -73,5 +73,14 @@ contain.appendChild(btn);
 
 function addNew(){
 
+      // const body = document.querySelector("body");
+      // const dialog = document.createElement("dialog");
+      // const form = document.createElement("form");
+      // dialog.appendChild(form);
+      // body.appendChild(dialog);
 
 }
+addNew();
+
+const dia = document.querySelector("dialog");
+dia.showModal();

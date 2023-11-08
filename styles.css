@@ -11,26 +11,19 @@ body {
   height: 100vh;
   width: 100%;
   gap: 1rem;
-  font-family: "Fira Sans", sans-serif, "Fira Code", monospace;
+  /* font-family ; */
 }
 
 .container {
-  padding: 0.5rem;
   height: inherit;
   width: inherit;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
 }
 .card {
-  padding: 0.5rem;
-  background-color: hsl(347, 55%, 74%);
+  border: 1px solid red;
   border-radius: 15px;
-  box-shadow: 10px 10px 16px -2px rgba(0, 0, 0, 0.52);
-  font-family: inherit;
 }
 
 .grid {
@@ -60,19 +53,6 @@ body {
 .btn {
   place-self: center;
   padding: 1rem 2rem;
-  border-radius: 20px;
-  border: none;
-  background-color: hsl(347, 90%, 44%);
-  color: white;
-  font-family: "Fira Code", monospace;
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.btn:hover{
-  outline: hsl(347, 90%, 44%) solid 1px;
-  background-color: white;
-  color: hsl(347, 90%, 44%);
 }
 
 dialog {
@@ -83,7 +63,6 @@ dialog {
   top: 20%;
   border: 1px solid rebeccapurple;
   border-radius: 20px;
-  background-color: beige;
 }
 
 form {
@@ -94,7 +73,7 @@ form {
 }
 
 .form-grid {
-  background-color: hsl(207, 39%, 51%);
+  background-color: antiquewhite;
   display: grid;
   justify-items: center;
   gap: 0.5rem;
@@ -103,17 +82,11 @@ form {
 }
 
 input {
-  appearance: none;
-  padding: 0.4rem 0 0.4rem 0.5rem;
-  outline: none;
-  border: none;
-  border-radius: 15px;
-}
-input:hover {
-  outline: gold 1px solid;
-}
-select {
   padding: 0.4rem 0;
+}
+select{
+  padding: 0.4rem 0;
+
 }
 .sub {
   grid-column: 1/3;
@@ -123,6 +96,6 @@ select {
   outline: none;
   border: none;
 }
-.sub:hover {
-  outline: rebeccapurple solid 2px;
+.sub:hover{
+      outline: rebeccapurple solid 2px;
 }

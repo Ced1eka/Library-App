@@ -141,7 +141,7 @@ function addNew() {
   status.appendChild(read);
   status.appendChild(notRead);
 console.log(aNewBook.status)
-  if (aNewBook.status === "2") {
+  if (aNewBook.status === "not-read") {
     status.selectedIndex = 1;
   } else status.selectedIndex = 0;
 

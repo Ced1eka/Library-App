@@ -10,11 +10,11 @@ function Book(title, author, pages, status) {
 }
 const myLibrary = [];
 
-const lotr = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
-const lotr2 = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
+const tH = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
+const lotr = new Book("The Lord of the Rings", "J.R.R Tolkein", 1216, "not read");
 
+myLibrary.push(tH);
 myLibrary.push(lotr);
-myLibrary.push(lotr2);
 
 function addBook() {
   myLibrary.forEach((item) => {
@@ -42,10 +42,21 @@ function addBook() {
     pages.classList.add("pages");
     pages.textContent = item.pages;
 
-    // Create a new paragraph element for the status.
-    const status = document.createElement("p");
-    status.classList.add("status");
-    status.textContent = item.status;
+    // Create a new select element for the status.
+    const status = document.createElement("select");
+    status.setAttribute('name','status');
+    status.setAttribute('id', 'status');
+    //add options as values
+    const read = document.createElement("option");
+    read.value = 'read';
+    read.textContent = 'read';
+    const notRead = document.createElement("option");
+    notRead.value = 'not read';
+    notRead.textContent = 'not read';
+    status.appendChild(read);
+    status.appendChild(notRead);
+    status.options;
+
 
     // Append the paragraph elements to the div element.
     card.appendChild(title);

@@ -20,10 +20,12 @@ body {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem .5rem;
 }
 .card {
-  border: 1px solid red;
   border-radius: 15px;
+  padding: .5rem;
+  box-shadow: 4px 10px 24px 2px rgba(0,0,0,0.66);
 }
 
 .grid {
@@ -34,20 +36,22 @@ body {
 }
 .title {
   grid-column: 1/3;
+  padding-top: .5rem;
 }
 .author {
+  padding-top: .5rem;
   grid-column: 1/3;
   grid-row: 2/3;
 }
 .pages {
   grid-column: 1/2;
   grid-row: 3/4;
-  justify-self: center;
+  place-self: center;
 }
-.status {
+select {
   grid-column: 2/3;
   grid-row: 3/4;
-  justify-self: center;
+  place-self: center;
 }
 
 .btn {

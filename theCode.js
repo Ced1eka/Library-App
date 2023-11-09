@@ -11,7 +11,7 @@ function Book(title, author, pages, status) {
 const myLibrary = [];
 
 const tH = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
-const lotr = new Book("The Lord of the Rings", "J.R.R Tolkein", 1216, "not read");
+const lotr = new Book("The Lord of the Rings", "J.R.R Tolkein", 1216, "read");
 
 myLibrary.push(tH);
 myLibrary.push(lotr);
@@ -55,7 +55,15 @@ function addBook() {
     notRead.textContent = 'not read';
     status.appendChild(read);
     status.appendChild(notRead);
-    status.options;
+
+    if(item.status === 'not read'){
+      status.selectedIndex = 1;
+    }
+      else
+      status.selectedIndex = 0;
+
+
+
 
 
     // Append the paragraph elements to the div element.

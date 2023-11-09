@@ -48,15 +48,29 @@ body {
   grid-row: 3/4;
   place-self: center;
 }
-select {
+ select {
   grid-column: 2/3;
   grid-row: 3/4;
   place-self: center;
+  border: none;
+  border-radius: 14px;
+  padding: .5rem;
+  background-color: white;
 }
 
 .btn {
   place-self: center;
   padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 14px;
+  background-color: hsl(0, 73%, 49%);
+  color: white;
+}
+.btn:hover{
+  color: hsl(0, 73%, 49%);
+  background-color: white;
+  outline: hsl(0, 73%, 49%) solid 1px;
 }
 
 dialog {
@@ -86,11 +100,26 @@ form {
 }
 
 input {
-  padding: 0.4rem 0;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 14px;
+  outline: none;
 }
-select{
+input:hover{
+  outline: black solid 1px;
+}
+.form-status label{
+  grid-column: 1/3;
+}
+.form-status > select{
   padding: 0.4rem 0;
-
+  grid-column: 1/3;
+  border: none;
+  border-radius: 14px;
+  background-color: white;
+}
+select:hover{
+  outline: black solid 1px;
 }
 .sub {
   grid-column: 1/3;

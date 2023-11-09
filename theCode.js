@@ -16,88 +16,114 @@ const lotr2 = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
 myLibrary.push(lotr);
 myLibrary.push(lotr2);
 
+function addBook() {
+  myLibrary.forEach((item) => {
+    const container = document.querySelector(".container");
 
-function addBook(){
+    // Create a new div element.
+    const card = document.createElement("div");
 
-myLibrary.forEach((item) =>{
+    // Set the class attribute of the div element to "card grid".
+    card.classList.add("card");
+    card.classList.add("grid");
 
-const container = document.querySelector(".container");
+    // Create a new paragraph element for the title.
+    const title = document.createElement("p");
+    title.classList.add("title");
+    title.textContent = item.title;
 
-// Create a new div element.
-const card = document.createElement("div");
+    // Create a new paragraph element for the author.
+    const author = document.createElement("p");
+    author.classList.add("author");
+    author.textContent = item.author;
 
-// Set the class attribute of the div element to "card grid".
-card.classList.add("card");
-card.classList.add("grid");
+    // Create a new paragraph element for the pages.
+    const pages = document.createElement("p");
+    pages.classList.add("pages");
+    pages.textContent = item.pages;
 
-// Create a new paragraph element for the title.
-const title = document.createElement("p");
-title.classList.add("title");
-title.textContent = item.title;
+    // Create a new paragraph element for the status.
+    const status = document.createElement("p");
+    status.classList.add("status");
+    status.textContent = item.status;
 
-// Create a new paragraph element for the author.
-const author = document.createElement("p");
-author.classList.add("author");
-author.textContent = item.author;
+    // Append the paragraph elements to the div element.
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(pages);
+    card.appendChild(status);
 
-// Create a new paragraph element for the pages.
-const pages = document.createElement("p");
-pages.classList.add("pages");
-pages.textContent = item.pages;
-
-// Create a new paragraph element for the status.
-const status = document.createElement("p");
-status.classList.add("status");
-status.textContent = item.status;
-
-// Append the paragraph elements to the div element.
-card.appendChild(title);
-card.appendChild(author);
-card.appendChild(pages);
-card.appendChild(status);
-
-// Append the div element to the body tag element.
-container.appendChild(card);
-
-});
+    // Append the div element to the body tag element.
+    container.appendChild(card);
+  });
 }
-// addBook();
+addBook();
 
-
+//append a button to the body
 const contain = document.querySelector("body");
 const btn = document.createElement("button");
 btn.classList.add("btn");
-btn.innerHTML = "Add Book"
+btn.innerHTML = "Add Book";
 contain.appendChild(btn);
 
-btn.addEventListener('click',()=>{
-      const dia = document.querySelector("dialog");
-      dia.showModal();
-})
-
+btn.addEventListener("click", () => {
+  const dia = document.querySelector("dialog");
+  dia.showModal();
+});
 
 const sub = document.querySelector(".sub");
-sub.addEventListener('click',()=>{
-      //closes modal
-      const dia = document.querySelector("dialog");
-      dia.close();
-      //get values
-      const title = document.getElementById('title').value;
-      const author = document.getElementById('author').value;
-      const pages = document.getElementById('pages').value;
-      const status = document.getElementById('status').value;
+sub.addEventListener("click", () => {
+  //closes modal
+  const dia = document.querySelector("dialog");
+  dia.close();
+  //get values
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const status = document.getElementById("status").value;
 
-      const newBook = new Book(title, author, pages, status);
-      myLibrary.push(newBook);
-      addBook();
-/* implement a way to read values from inputs and
-   create a new Book object from them and store inside
-   the array.
-*/
-})
+  const newBook = new Book(title, author, pages, status);
+  myLibrary.push(newBook);
+  addNew();
+});
 
-function addNew(){
-// get value from the dialog inputs
+function addNew() {
+  const aNewBook = myLibrary[myLibrary.length - 1];
+  const container = document.querySelector(".container");
 
+  // Create a new div element.
+  const card = document.createElement("div");
+
+  // Set the class attribute of the div element to "card grid".
+  card.classList.add("card");
+  card.classList.add("grid");
+
+  // Create a new paragraph element for the title.
+  const title = document.createElement("p");
+  title.classList.add("title");
+  title.textContent = aNewBook.title;
+
+  // Create a new paragraph element for the author.
+  const author = document.createElement("p");
+  author.classList.add("author");
+  author.textContent = aNewBook.author;
+
+  // Create a new paragraph element for the pages.
+  const pages = document.createElement("p");
+  pages.classList.add("pages");
+  pages.textContent = aNewBook.pages;
+
+  // Create a new paragraph element for the status.
+  const status = document.createElement("p");
+  status.classList.add("status");
+  status.textContent = aNewBook.status;
+
+  // Append the paragraph elements to the div element.
+  card.appendChild(title);
+  card.appendChild(author);
+  card.appendChild(pages);
+  card.appendChild(status);
+
+  // Append the div element to the body tag element.
+  container.appendChild(card);
 }
-addNew();

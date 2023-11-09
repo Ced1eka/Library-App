@@ -44,27 +44,21 @@ function addBook() {
 
     // Create a new select element for the status.
     const status = document.createElement("select");
-    status.setAttribute('name','status');
-    status.setAttribute('id', 'status');
+    status.setAttribute("name", "status");
+    status.setAttribute("id", "status");
     //add options as values
     const read = document.createElement("option");
-    read.value = 'read';
-    read.textContent = 'read';
+    read.value = "read";
+    read.textContent = "read";
     const notRead = document.createElement("option");
-    notRead.value = 'not read';
-    notRead.textContent = 'not read';
+    notRead.value = "not read";
+    notRead.textContent = "not read";
     status.appendChild(read);
     status.appendChild(notRead);
 
-    if(item.status === 'not read'){
+    if (item.status === "not read") {
       status.selectedIndex = 1;
-    }
-      else
-      status.selectedIndex = 0;
-
-
-
-
+    } else status.selectedIndex = 0;
 
     // Append the paragraph elements to the div element.
     card.appendChild(title);
@@ -99,9 +93,10 @@ sub.addEventListener("click", () => {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  const status = document.getElementById("status").value;
-
-  const newBook = new Book(title, author, pages, status);
+  const status = document.getElementById("mod-status");
+  const logg = status.options[status.selectedIndex].value;
+  const newBook = new Book(title, author, pages, logg);
+  console.log(newBook)
   myLibrary.push(newBook);
   addNew();
 });
@@ -132,10 +127,23 @@ function addNew() {
   pages.classList.add("pages");
   pages.textContent = aNewBook.pages;
 
-  // Create a new paragraph element for the status.
-  const status = document.createElement("p");
-  status.classList.add("status");
-  status.textContent = aNewBook.status;
+  // Create a new select element for the status.
+  const status = document.createElement("select");
+  status.setAttribute("name", "status");
+  status.setAttribute("id", "status");
+  //add options as values
+  const read = document.createElement("option");
+  read.value = "1";
+  read.textContent = "read";
+  const notRead = document.createElement("option");
+  notRead.value = "2";
+  notRead.textContent = "not read";
+  status.appendChild(read);
+  status.appendChild(notRead);
+console.log(aNewBook.status)
+  if (aNewBook.status === "2") {
+    status.selectedIndex = 1;
+  } else status.selectedIndex = 0;
 
   // Append the paragraph elements to the div element.
   card.appendChild(title);

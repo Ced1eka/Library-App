@@ -126,6 +126,19 @@ sub.addEventListener("click", () => {
   addNew();
 });
 
+const dia = document.querySelector("dialog");
+dia.addEventListener('close',()=>{
+  const title = document.getElementById("title");
+  title.value = '';
+  const author = document.getElementById("author")
+  author.value = '';
+  const pages = document.getElementById("pages");
+  pages.value = '';
+  const status = document.getElementById("mod-status");
+  const logg = status.options[status.selectedIndex];
+  logg.value = '';
+})
+
 function addNew() {
   const aNewBook = myLibrary[myLibrary.length - 1];
   const container = document.querySelector(".container");

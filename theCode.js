@@ -17,7 +17,7 @@ myLibrary.push(tH);
 myLibrary.push(lotr);
 
 function addBook() {
-  myLibrary.forEach((item) => {
+  myLibrary.forEach((item, index) => {
     const container = document.querySelector(".container");
 
     // Create a new div element.
@@ -26,6 +26,7 @@ function addBook() {
     // Set the class attribute of the div element to "card grid".
     card.classList.add("card");
     card.classList.add("grid");
+    card.dataset.bookNumber = index;
 
     // Create a new paragraph element for the title.
     const title = document.createElement("p");
@@ -46,6 +47,7 @@ function addBook() {
     const status = document.createElement("select");
     status.setAttribute("name", "status");
     status.setAttribute("id", "status");
+
     //add options as values
     const read = document.createElement("option");
     read.value = "read";
@@ -60,14 +62,40 @@ function addBook() {
       status.selectedIndex = 1;
     } else status.selectedIndex = 0;
 
+    //Add in a button element to delete the entire book
+    const del = document.createElement("button");
+    del.classList.add("delete");
+    del.dataset.bookNumber = index;
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>`;
+    svg.innerHTML = svgString;
+    del.appendChild(svg);
+
     // Append the paragraph elements to the div element.
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(status);
+    card.appendChild(del);
 
     // Append the div element to the body tag element.
     container.appendChild(card);
+
+    // add delete book function
+    del.addEventListener('click',()=>{
+
+      const cardNum = card.dataset.bookNumber;
+      myLibrary.splice(cardNum,1);
+      // const par =  del.parentElement;
+      const divNum = document.querySelector(`[data-book-number="${cardNum}"]`);
+      divNum.remove();
+      document.querySelectorAll('.card').forEach((divNum, index) => {
+        divNum.dataset.bookNumber = index;
+      });
+
+      });
+
   });
 }
 addBook();
@@ -96,7 +124,7 @@ sub.addEventListener("click", () => {
   const status = document.getElementById("mod-status");
   const logg = status.options[status.selectedIndex].value;
   const newBook = new Book(title, author, pages, logg);
-  console.log(newBook)
+  // console.log(newBook);
   myLibrary.push(newBook);
   addNew();
 });
@@ -111,6 +139,7 @@ function addNew() {
   // Set the class attribute of the div element to "card grid".
   card.classList.add("card");
   card.classList.add("grid");
+  card.dataset.bookNumber = myLibrary.length - 1;
 
   // Create a new paragraph element for the title.
   const title = document.createElement("p");
@@ -140,17 +169,41 @@ function addNew() {
   notRead.textContent = "not read";
   status.appendChild(read);
   status.appendChild(notRead);
-console.log(aNewBook.status)
+  // console.log(aNewBook.status);
   if (aNewBook.status === "not-read") {
     status.selectedIndex = 1;
   } else status.selectedIndex = 0;
+
+
+    //Add in a button element to delete the entire book
+    const del = document.createElement("button");
+    del.classList.add("delete");
+    del.dataset.bookNumber = myLibrary.length - 1;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>`;
+    svg.innerHTML = svgString;
+    del.appendChild(svg);
 
   // Append the paragraph elements to the div element.
   card.appendChild(title);
   card.appendChild(author);
   card.appendChild(pages);
   card.appendChild(status);
+  card.appendChild(del);
 
   // Append the div element to the body tag element.
   container.appendChild(card);
+
+      // add delete book function
+      del.addEventListener('click',()=>{
+
+        const cardNum = card.dataset.bookNumber;
+        myLibrary.splice(cardNum,1);
+        // const par =  del.parentElement;
+        const divNum = document.querySelector(`[data-book-number="${cardNum}"]`);
+        divNum.remove();
+        document.querySelectorAll('.card').forEach((divNum, index) => {
+          divNum.dataset.bookNumber = index;
+        });
+        });
 }

@@ -83,19 +83,16 @@ function addBook() {
     container.appendChild(card);
 
     // add delete book function
-    del.addEventListener('click',()=>{
-
+    del.addEventListener("click", () => {
       const cardNum = card.dataset.bookNumber;
-      myLibrary.splice(cardNum,1);
+      myLibrary.splice(cardNum, 1);
       // const par =  del.parentElement;
       const divNum = document.querySelector(`[data-book-number="${cardNum}"]`);
       divNum.remove();
-      document.querySelectorAll('.card').forEach((divNum, index) => {
+      document.querySelectorAll(".card").forEach((divNum, index) => {
         divNum.dataset.bookNumber = index;
       });
-
-      });
-
+    });
   });
 }
 addBook();
@@ -169,20 +166,30 @@ function addNew() {
   notRead.textContent = "not read";
   status.appendChild(read);
   status.appendChild(notRead);
-  // console.log(aNewBook.status);
   if (aNewBook.status === "not-read") {
     status.selectedIndex = 1;
   } else status.selectedIndex = 0;
 
+  //modify status
+  status.addEventListener("change", () => {
+    if (status.value === "1") {
+      status.selectedIndex = 0;
+      aNewBook.status = "read";
+    } else {
+      status.selectedIndex = 1;
+      aNewBook.status = "not read";
+    }
+    // console.table(myLibrary)
+  });
 
-    //Add in a button element to delete the entire book
-    const del = document.createElement("button");
-    del.classList.add("delete");
-    del.dataset.bookNumber = myLibrary.length - 1;
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>`;
-    svg.innerHTML = svgString;
-    del.appendChild(svg);
+  //Add in a button element to delete the entire book
+  const del = document.createElement("button");
+  del.classList.add("delete");
+  del.dataset.bookNumber = myLibrary.length - 1;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const svgString = `<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>`;
+  svg.innerHTML = svgString;
+  del.appendChild(svg);
 
   // Append the paragraph elements to the div element.
   card.appendChild(title);
@@ -194,16 +201,15 @@ function addNew() {
   // Append the div element to the body tag element.
   container.appendChild(card);
 
-      // add delete book function
-      del.addEventListener('click',()=>{
-
-        const cardNum = card.dataset.bookNumber;
-        myLibrary.splice(cardNum,1);
-        // const par =  del.parentElement;
-        const divNum = document.querySelector(`[data-book-number="${cardNum}"]`);
-        divNum.remove();
-        document.querySelectorAll('.card').forEach((divNum, index) => {
-          divNum.dataset.bookNumber = index;
-        });
-        });
+  // add delete book function
+  del.addEventListener("click", () => {
+    const cardNum = card.dataset.bookNumber;
+    myLibrary.splice(cardNum, 1);
+    // const par =  del.parentElement;
+    const divNum = document.querySelector(`[data-book-number="${cardNum}"]`);
+    divNum.remove();
+    document.querySelectorAll(".card").forEach((divNum, index) => {
+      divNum.dataset.bookNumber = index;
+    });
+  });
 }

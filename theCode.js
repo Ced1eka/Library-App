@@ -1,13 +1,15 @@
-function Book(title, author, pages, status) {
-  (this.title = title),
-    (this.author = author),
-    (this.pages = pages),
-    (this.status = status);
-
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${status}`;
-  };
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages}, ${this.status}`;
+  }
 }
+
 const myLibrary = [];
 
 const tH = new Book("The Hobbit", "J.R.R Tolkein", 295, "not read");
@@ -127,17 +129,17 @@ sub.addEventListener("click", () => {
 });
 
 const dia = document.querySelector("dialog");
-dia.addEventListener('close',()=>{
+dia.addEventListener("close", () => {
   const title = document.getElementById("title");
-  title.value = '';
-  const author = document.getElementById("author")
-  author.value = '';
+  title.value = "";
+  const author = document.getElementById("author");
+  author.value = "";
   const pages = document.getElementById("pages");
-  pages.value = '';
+  pages.value = "";
   const status = document.getElementById("mod-status");
   const logg = status.options[status.selectedIndex];
-  logg.value = '';
-})
+  logg.value = "";
+});
 
 function addNew() {
   const aNewBook = myLibrary[myLibrary.length - 1];
